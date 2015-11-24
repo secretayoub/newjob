@@ -1,0 +1,27 @@
+.col-md-12
+  section.panel
+    .panel-body
+      .position-center
+        = form_for(@customer_customer, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
+          .form-group
+            .col-lg-2.col-sm-2.control-label = label_tag :company_name, "Nom société"
+            .col-lg-10
+              = f.text_field :company_name, class: "form-control"
+          .form-group
+            .col-lg-2.col-sm-2.control-label Adresse
+            .col-lg-4
+              = f.text_field :city, placeholder: 'Ville', class: "form-control"
+            .col-lg-2.col-sm-2 -
+            .col-lg-4
+              = f.text_field :zip_code, placeholder: 'Code postale', class: "form-control"
+          .form-group
+            .col-lg-2.col-sm-2.control-label = f.label :avatar, "société logo"
+            .col-lg-10
+              = f.file_field :avatar, class: "form-control"
+          .form-group
+            .col-lg-2.col-sm-2.control-label = f.label :company_description, "Description société"
+            .col-lg-10
+              = f.text_area :description, rows: 5, placeholder:'Votre text ...', class: 'form-control'
+
+          .form-actions
+            = f.submit "Ajouter", class: "button btn btn-success btn-xs pull-right"
