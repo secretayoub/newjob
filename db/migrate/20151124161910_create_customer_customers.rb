@@ -5,6 +5,7 @@ class CreateCustomerCustomers < ActiveRecord::Migration
       t.string :company_description
       t.string :city
       t.string :zip_code
+      t.integer :admin_id
 
       t.timestamps null: false
     end

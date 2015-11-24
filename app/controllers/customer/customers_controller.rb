@@ -1,5 +1,5 @@
 class Customer::CustomersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
   before_action :set_customer_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customer/customers
