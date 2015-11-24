@@ -1,0 +1,25 @@
+h1 Listing candidats
+
+table
+- unless @current_candidat.nil?
+  thead
+    tr
+      th name
+      th phone_number
+      th image
+      th
+      th
+      th
+    br
+  tbody
+    tr
+      td = @current_candidat.name
+      td = @current_candidat.phone_number
+      td = image_tag @current_candidat.avatar.url(:thumb)
+      td = link_to 'Show', @current_candidat
+      td = link_to 'Edit', edit_candidat_path(@current_candidat)
+      td = link_to 'Destroy', @current_candidat, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+
+- else
+  = link_to 'New Candidat', new_candidat_path
