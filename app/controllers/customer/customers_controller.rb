@@ -5,7 +5,7 @@ class Customer::CustomersController < ApplicationController
   # GET /customer/customers
   # GET /customer/customers.json
   def index
-    @customer_customers = Customer::Customer.all
+    @customer = current_admin.customer
   end
 
   # GET /customer/customers/1
@@ -26,6 +26,7 @@ class Customer::CustomersController < ApplicationController
   # POST /customer/customers.json
   def create
     @customer_customer = Customer::Customer.new(customer_customer_params)
+    @customer_customer.admin = current_admin
 
     respond_to do |format|
       if @customer_customer.save

@@ -1,19 +1,21 @@
 h1 Listing customer_customers
-
-table
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
-    - @customer_customers.each do |customer_customer|
+- unless @customer.nil?
+  table
+    thead
       tr
-        td = link_to 'Show', customer_customer
-        td = link_to 'Edit', edit_customer_customer_path(customer_customer)
-        td = link_to 'Destroy', customer_customer, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Title
+        th
+        th
+        th
 
-br
+    tbody
+      tr
+        td = @customer.company_name
+        td = link_to 'Show', @custome
+        td = link_to 'Edit', edit_customer_customer_path(@customer)
+        td = link_to 'Destroy', @customer, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'New Customer', new_customer_customer_path
+- else
+  = link_to 'New Customer', new_customer_customer_path
+
+= link_to 'New ad ', new_customer_ad_path

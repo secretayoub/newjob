@@ -1,0 +1,19 @@
+h1 Listing customer_ads
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @customer_ads.each do |customer_ad|
+      tr
+        td = link_to 'Show', customer_ad
+        td = link_to 'Edit', edit_customer_ad_path(customer_ad)
+        td = link_to 'Destroy', customer_ad, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Ad', new_customer_ad_path

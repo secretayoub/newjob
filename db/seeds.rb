@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+types = [
+    {title: 'CDD'},
+    {title: 'CDI'},
+    {title: 'Stage'},
+    {title: 'Freelance'}
+]
+
+renumeration = [
+    {title: '20k€ - 30k€'},
+    {title: '30k€ - 36k€'},
+    {title: '37k€ - 45k€'},
+    {title: '45k€ - 60k€'}
+]
+
+Customer::ContractType.create(types)
+Customer::Renumeration.create(renumeration)

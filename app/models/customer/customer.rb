@@ -1,4 +1,5 @@
 class Customer::Customer < ActiveRecord::Base
+  belongs_to :admin
 
   has_attached_file :avatar, styles: {
     thumb: '100x100>',

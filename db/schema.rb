@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124201541) do
+ActiveRecord::Schema.define(version: 20151125143743) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -47,17 +47,40 @@ ActiveRecord::Schema.define(version: 20151124201541) do
     t.datetime "my_cv_updated_at"
   end
 
+  create_table "customer_ads", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "ad_number",       default: 0
+    t.integer  "renumeration_id"
+    t.text     "ad_text"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "customer_contract_types", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "ad_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customer_customers", force: :cascade do |t|
     t.string   "company_name"
     t.string   "company_description"
     t.string   "city"
     t.string   "zip_code"
+    t.integer  "admin_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "customer_renumerations", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
