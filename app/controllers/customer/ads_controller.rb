@@ -5,9 +5,9 @@ class Customer::AdsController < ApplicationController
   # GET /customer/ads.json
   def index
     if params[:tag]
-      @customer_ads = current_admin.customer.ads.tagged_with(params[:tag])
+      @customer_ads = current_admin.ads.tagged_with(params[:tag])
     else
-      @customer_ads = current_admin.customer.ads
+      @customer_ads = current_admin.ads
     end
   end
 
