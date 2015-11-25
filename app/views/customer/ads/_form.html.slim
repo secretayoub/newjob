@@ -34,5 +34,11 @@
               = f.text_area :ad_text, rows: 5, placeholder:'Votre text ...', class: 'form-control'
 
           hr
+          .form-group
+            .col-lg-2.col-sm-2.control-label = f.label :tag_list, "Mot clé separer par virgule"
+            .col-lg-10
+              = f.text_field :tag_list, class: 'form-control'
+
+          hr
           .form-actions
             = f.submit "Ajouter", class: "button btn btn-success btn-xs pull-right"

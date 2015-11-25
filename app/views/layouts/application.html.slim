@@ -39,6 +39,7 @@ html lang="en"
                 = link_to "Sign in", new_user_session_path
               - else
                 = link_to "Sign out", destroy_user_session_path, method: :delete
+              = link_to "Sign out admin", destroy_admin_session_path, method: :delete
 
     .container
       .row

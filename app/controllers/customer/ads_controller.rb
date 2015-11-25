@@ -4,7 +4,11 @@ class Customer::AdsController < ApplicationController
   # GET /customer/ads
   # GET /customer/ads.json
   def index
-    @customer_ads = Customer::Ad.all
+    if params[:tag]
+      @customer_ads = current_admin.customer.ads.tagged_with(params[:tag])
+    else
+      @customer_ads = current_admin.customer.ads
+    end
   end
 
   # GET /customer/ads/1
@@ -25,6 +29,7 @@ class Customer::AdsController < ApplicationController
   # POST /customer/ads.json
   def create
     @customer_ad = Customer::Ad.new(customer_ad_params)
+    @customer_ad.customer = current_admin.customer
 
     respond_to do |format|
       if @customer_ad.save
@@ -71,6 +76,7 @@ class Customer::AdsController < ApplicationController
     def customer_ad_params
       params.require(:customer_ad).permit(:title,
                                           :ad_text,
+                                          :tag_list,
                                           :renumeration_id,
                                           contract_type_ids: [])
     end

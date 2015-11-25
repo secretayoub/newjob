@@ -1,8 +1,10 @@
 h1 Listing customer_ads
 
-table
+table.table.table-striped
   thead
     tr
+      th Titre
+      th Tags
       th
       th
       th
@@ -10,6 +12,8 @@ table
   tbody
     - @customer_ads.each do |customer_ad|
       tr
+        td = customer_ad.title
+        td = raw customer_ad.tag_list.map{ |t| link_to t, customer_tag_path(t)}.join(', ')
         td = link_to 'Show', customer_ad
         td = link_to 'Edit', edit_customer_ad_path(customer_ad)
         td = link_to 'Destroy', customer_ad, data: {:confirm => 'Are you sure?'}, :method => :delete

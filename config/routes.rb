@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   namespace :customer do
     resources :customers
     resources :ads
+    get 'tags/:tag', to: 'ads#index', as: :tag
   end
+
+
 end
