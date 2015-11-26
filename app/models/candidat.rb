@@ -1,5 +1,7 @@
 class Candidat < ActiveRecord::Base
   belongs_to :user
+  has_many :candidat_ads
+  has_many :ads, :class_name => "Customer::Ad", through: :candidat_ads
 
   has_attached_file :my_cv
   has_attached_file :avatar, styles: {

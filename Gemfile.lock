@@ -55,6 +55,9 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     chronic (0.10.2)
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -233,6 +236,7 @@ DEPENDENCIES
   awesome_print
   byebug
   cancan
+  ckeditor
   coffee-rails (~> 4.1.0)
   devise
   figaro

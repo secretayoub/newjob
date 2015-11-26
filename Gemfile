@@ -41,6 +41,7 @@ gem 'will_paginate-bootstrap'
 gem 'rubocop'
 gem 'awesome_print', require: 'ap'
 gem 'acts-as-taggable-on'
+gem 'ckeditor'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

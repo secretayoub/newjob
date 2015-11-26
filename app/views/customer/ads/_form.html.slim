@@ -31,7 +31,8 @@
           .form-group
             .col-lg-2.col-sm-2.control-label = f.label :ad_text, "Description poste"
             .col-lg-10
-              = f.text_area :ad_text, rows: 5, placeholder:'Votre text ...', class: 'form-control'
+              = f.cktext_area :ad_text, rows: 10
+              / = f.text_area :ad_text, rows: 5, placeholder:'Votre text ...', class: 'form-control'
 
           hr
           .form-group

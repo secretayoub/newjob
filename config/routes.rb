@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :welcome
+  get 'tags/:tag', to: 'welcome#index', as: :tag
   resources :candidats
+  resources :candidat_ads
 
   namespace :customer do
     resources :customers
