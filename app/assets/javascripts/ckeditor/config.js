@@ -15,6 +15,9 @@ CKEDITOR.editorConfig = function (config) {
   config.filebrowserImageUploadUrl = "/ckeditor/pictures";
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
 
+  config.language = "fr";
+  config.uiColor = "#ecf0f1";
+
   config.toolbar_Full = [
     '/', {
       name: 'basicstyles',
@@ -28,5 +31,4 @@ CKEDITOR.editorConfig = function (config) {
     }
   ];
   config.toolbar = 'Full';
-  return true;
 }

@@ -16,3 +16,7 @@
 //= require ckeditor/init
 //= require turbolinks
 //= require_self
+//
+$('.ckeditor').ckeditor({
+  // optional config
+});

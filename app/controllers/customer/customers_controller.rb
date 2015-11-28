@@ -1,5 +1,5 @@
-class Customer::CustomersController < ApplicationController
-  before_action :authenticate_admin!
+class Customer::CustomersController < CustomersController
+  before_action :check_admin
   before_action :set_customer_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customer/customers
@@ -64,6 +64,13 @@ class Customer::CustomersController < ApplicationController
   end
 
   private
+
+    def check_admin
+      unless current_admin.customer.nil?
+        redirect_to customer_ads_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_customer_customer
       @customer_customer = Customer::Customer.find(params[:id])

@@ -8,54 +8,51 @@ p#notice = notice
         .form-group
           .col-lg-2.col-sm-2.control-label Titre Annonce
           .col-lg-10
-            = @customer_ad.title
+            = @ad.title
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label Type contrat
           .col-lg-10
-            - @customer_ad.contract_types.each do |type|
+            - @ad.contract_types.each do |type|
               = type.title
               br
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label rémunération
           .col-lg-10
-            = @customer_ad.renumeration.title
+            = @ad.renumeration.title
               br
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label Activité société
           .col-lg-10
-            = raw(@customer_ad.ad_text)
+            = raw(@ad.ad_text)
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label Profil
           .col-lg-10
-            = raw(@customer_ad.profil)
+            = raw(@ad.profil)
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label Mission
           .col-lg-10
-            = raw(@customer_ad.mission)
+            = raw(@ad.mission)
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label Avantages
           .col-lg-10
-            = @customer_ad.advantage
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Candidats
-          .col-lg-10
-            - @customer_ad.candidats.each do |candidat|
-              .btn.btn-lg.btn-primary
-                = link_to candidat.name, customer_show_candidat_path(candidat_id: candidat.id)
+            = @ad.advantage
         hr
         .form-group
           .col-lg-2.col-sm-2.control-label Mot clé separer par virgule
           .col-lg-10
-            = @customer_ad.tag_list
+            = @ad.tag_list
+        - if user_signed_in?
+          hr
+          .form-group
+            = form_for(@candidat_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
+              = f.hidden_field :ad_id, value: @ad.id
+              = f.submit "Postuler", class: "button btn btn-success btn-xs pull-right"
 
 
-= link_to 'Edit', edit_customer_ad_path(@customer_ad)
-'|
 = link_to 'Back', customer_ads_path

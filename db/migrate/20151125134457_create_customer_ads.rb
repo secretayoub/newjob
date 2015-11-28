@@ -5,6 +5,9 @@ class CreateCustomerAds < ActiveRecord::Migration
       t.integer :ad_number, default: 0
       t.integer :renumeration_id
       t.text :ad_text
+      t.text :profil
+      t.text :mission
+      t.string :advantage
       t.integer :customer_id
 
       t.timestamps null: false

@@ -8,6 +8,10 @@ class CandidatsController < ApplicationController
     @current_candidat = current_user.candidat
   end
 
+  def my_ads
+
+  end
+
   # GET /candidats/1
   # GET /candidats/1.json
   def show
@@ -30,11 +34,9 @@ class CandidatsController < ApplicationController
 
     respond_to do |format|
       if @candidat.save
-        format.html { redirect_to @candidat, notice: 'Candidat was successfully created.' }
-        format.json { render :show, status: :created, location: @candidat }
+        format.html { redirect_to :root, notice: 'Candidat was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @candidat.errors, status: :unprocessable_entity }
       end
     end
   end

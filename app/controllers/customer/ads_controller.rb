@@ -1,4 +1,4 @@
-class Customer::AdsController < ApplicationController
+class Customer::AdsController < CustomersController
   before_action :set_customer_ad, only: [:show, :edit, :update, :destroy]
 
   # GET /customer/ads
@@ -14,6 +14,11 @@ class Customer::AdsController < ApplicationController
   # GET /customer/ads/1
   # GET /customer/ads/1.json
   def show
+    @customer_ad = @customer_ad
+  end
+
+  def show_candidat
+    @candidat = Candidat.find(params[:candidat_id])
   end
 
   # GET /customer/ads/new
@@ -34,10 +39,8 @@ class Customer::AdsController < ApplicationController
     respond_to do |format|
       if @customer_ad.save
         format.html { redirect_to @customer_ad, notice: 'Ad was successfully created.' }
-        format.json { render :show, status: :created, location: @customer_ad }
       else
         format.html { render :new }
-        format.json { render json: @customer_ad.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,10 +51,8 @@ class Customer::AdsController < ApplicationController
     respond_to do |format|
       if @customer_ad.update(customer_ad_params)
         format.html { redirect_to @customer_ad, notice: 'Ad was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer_ad }
       else
         format.html { render :edit }
-        format.json { render json: @customer_ad.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,6 +77,9 @@ class Customer::AdsController < ApplicationController
     def customer_ad_params
       params.require(:customer_ad).permit(:title,
                                           :ad_text,
+                                          :advantage,
+                                          :profil,
+                                          :mission,
                                           :tag_list,
                                           :renumeration_id,
                                           contract_type_ids: [])

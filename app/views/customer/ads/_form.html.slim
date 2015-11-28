@@ -29,11 +29,24 @@
                       = b.label
           hr
           .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :ad_text, "Description poste"
+            .col-lg-2.col-sm-2.control-label = f.label :ad_text, "Activité société"
             .col-lg-10
-              = f.cktext_area :ad_text, rows: 10
-              / = f.text_area :ad_text, rows: 5, placeholder:'Votre text ...', class: 'form-control'
-
+              = f.cktext_area :ad_text
+          hr
+          .form-group
+            .col-lg-2.col-sm-2.control-label = f.label :profil, "Mission"
+            .col-lg-10
+              = f.cktext_area :profil
+          hr
+          .form-group
+            .col-lg-2.col-sm-2.control-label = f.label :mission, "Profil"
+            .col-lg-10
+              = f.cktext_area :mission
+          hr
+          .form-group
+            .col-lg-2.col-sm-2.control-label = label_tag :advantage, "Avantages"
+            .col-lg-10
+              = f.text_field :advantage, class: "form-control"
           hr
           .form-group
             .col-lg-2.col-sm-2.control-label = f.label :tag_list, "Mot clé separer par virgule"
@@ -42,4 +55,4 @@
 
           hr
           .form-actions
-            = f.submit "Ajouter", class: "button btn btn-success btn-xs pull-right"
+            = f.submit "Valider", class: "button btn btn-success btn-xs pull-right"

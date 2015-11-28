@@ -6,16 +6,15 @@ table.table.table-striped
       th Titre
       th Tags
       th Action
-      th
-      th
-      th
+
 
   tbody
     - @ads.each do |ad|
       tr
         td = ad.title
         td = raw ad.tag_list.map{ |t| link_to t, tag_path(t)}.join(', ')
+        td = link_to 'Voir', welcome_path(ad)
 br
 
-= link_to "Rectuteur", new_candidat_path
-= link_to "Rectuteur", customer_customers_path
+= link_to "Candidat", new_candidat_path
+= link_to "Rectuteur", new_customer_customer_path

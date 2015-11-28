@@ -75,6 +75,9 @@ ActiveRecord::Schema.define(version: 20151126110745) do
     t.integer  "ad_number",       default: 0
     t.integer  "renumeration_id"
     t.text     "ad_text"
+    t.text     "profil"
+    t.text     "mission"
+    t.string   "advantage"
     t.integer  "customer_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
