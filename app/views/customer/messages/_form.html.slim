@@ -1,0 +1,18 @@
+= @user.email
+= form_tag( customer_send_message_path) do
+
+  = hidden_field_tag :user, @user.id
+  .form-group
+    .col-lg-2.col-sm-2.control-label Sujet
+    .col-lg-10
+      = text_field_tag :subject, nil, class: 'form-control'
+    .space
+  .form-group
+    .col-lg-2.col-sm-2.control-label Text
+    .col-lg-10
+      = text_area_tag :body, nil, rows: 5, class: 'form-control'
+    .space
+  .form-group
+    .space
+    .form-actions
+      = submit_tag"Ajouter", class: "button btn btn-success btn-xs pull-right"

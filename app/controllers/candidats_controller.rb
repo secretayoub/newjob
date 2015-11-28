@@ -2,18 +2,27 @@ class CandidatsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_candidat, only: [:show, :edit, :update, :destroy]
 
-  # GET /candidats
-  # GET /candidats.json
   def index
     @current_candidat = current_user.candidat
+  end
+
+  def list_conversation
+    @conversations = current_user.mailbox.conversations
+  end
+
+  def show_conversation
+    @conversation = Mailboxer::Conversation.find(params[:id])
+  end
+  def reply_conversation
+    @conversation = Mailboxer::Conversation.find(params[:conversation])
+    current_user.reply_to_conversation(@conversation, params[:body])
+    redirect_to show_conversation_candidats_path(@conversation)
   end
 
   def my_ads
 
   end
 
-  # GET /candidats/1
-  # GET /candidats/1.json
   def show
   end
 
@@ -26,8 +35,6 @@ class CandidatsController < ApplicationController
   def edit
   end
 
-  # POST /candidats
-  # POST /candidats.json
   def create
     @candidat = Candidat.new(candidat_params)
     @candidat.user = current_user
@@ -41,8 +48,6 @@ class CandidatsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /candidats/1
-  # PATCH/PUT /candidats/1.json
   def update
     respond_to do |format|
       if @candidat.update(candidat_params)
@@ -55,8 +60,6 @@ class CandidatsController < ApplicationController
     end
   end
 
-  # DELETE /candidats/1
-  # DELETE /candidats/1.json
   def destroy
     @candidat.destroy
     respond_to do |format|

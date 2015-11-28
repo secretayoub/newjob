@@ -1,0 +1,19 @@
+h1 Listing customer_messages
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @customer_messages.each do |customer_message|
+      tr
+        td = link_to 'Show', customer_message
+        td = link_to 'Edit', edit_customer_message_path(customer_message)
+        td = link_to 'Destroy', customer_message, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Message', new_customer_message_path

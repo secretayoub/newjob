@@ -17,4 +17,11 @@ table.table.table-striped
 br
 
 = link_to "Candidat", new_candidat_path
+br
 = link_to "Rectuteur", new_customer_customer_path
+br
+br
+- if user_signed_in?
+  = link_to 'Conversation', list_conversation_candidats_path
+
+

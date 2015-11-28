@@ -13,6 +13,9 @@
  *= require_self
  */
 
+.space{
+  padding: 15px;
+}
 .risk-column-new
 {
   -webkit-columns: 2 200px;

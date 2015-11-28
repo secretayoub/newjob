@@ -1,8 +1,6 @@
 class Customer::AdsController < CustomersController
   before_action :set_customer_ad, only: [:show, :edit, :update, :destroy]
 
-  # GET /customer/ads
-  # GET /customer/ads.json
   def index
     if params[:tag]
       @customer_ads = current_admin.ads.tagged_with(params[:tag])
@@ -11,8 +9,7 @@ class Customer::AdsController < CustomersController
     end
   end
 
-  # GET /customer/ads/1
-  # GET /customer/ads/1.json
+
   def show
     @customer_ad = @customer_ad
   end
@@ -21,7 +18,6 @@ class Customer::AdsController < CustomersController
     @candidat = Candidat.find(params[:candidat_id])
   end
 
-  # GET /customer/ads/new
   def new
     @customer_ad = Customer::Ad.new
   end
@@ -30,8 +26,6 @@ class Customer::AdsController < CustomersController
   def edit
   end
 
-  # POST /customer/ads
-  # POST /customer/ads.json
   def create
     @customer_ad = Customer::Ad.new(customer_ad_params)
     @customer_ad.customer = current_admin.customer
@@ -45,8 +39,6 @@ class Customer::AdsController < CustomersController
     end
   end
 
-  # PATCH/PUT /customer/ads/1
-  # PATCH/PUT /customer/ads/1.json
   def update
     respond_to do |format|
       if @customer_ad.update(customer_ad_params)
@@ -57,8 +49,6 @@ class Customer::AdsController < CustomersController
     end
   end
 
-  # DELETE /customer/ads/1
-  # DELETE /customer/ads/1.json
   def destroy
     @customer_ad.destroy
     respond_to do |format|
@@ -68,12 +58,10 @@ class Customer::AdsController < CustomersController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_customer_ad
       @customer_ad = Customer::Ad.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def customer_ad_params
       params.require(:customer_ad).permit(:title,
                                           :ad_text,

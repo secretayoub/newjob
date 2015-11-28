@@ -1,0 +1,20 @@
+strong
+  = @conversation.originator.customer.company_name
+i
+  = @conversation.subject
+br
+| ---- messages -----|
+= render partial: 'message_item', collection: @conversation.messages, as: :message
+
+= form_tag(reply_conversation_candidats_path) do
+
+  = hidden_field_tag :conversation, @conversation.id
+  .form-group
+    .col-lg-2.col-sm-2.control-label Text
+    .col-lg-10
+      = text_area_tag :body, nil, rows: 5, class: 'form-control'
+    .space
+  .form-group
+    .space
+    .form-actions
+      = submit_tag"Ajouter", class: "button btn btn-success btn-xs pull-right"

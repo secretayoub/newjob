@@ -7,4 +7,8 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   acts_as_messageable
+
+  def name
+    "#{self.customer.company_name}"
+  end
 end

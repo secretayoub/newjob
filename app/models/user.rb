@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
+  def name
+    "#{self.candidat.name}"
+  end
+
 end
