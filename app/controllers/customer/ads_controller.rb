@@ -9,6 +9,18 @@ class Customer::AdsController < CustomersController
     end
   end
 
+  def list_conversation
+    @conversations = current_admin.mailbox.conversations
+  end
+
+  def show_conversation
+    @conversation = Mailboxer::Conversation.find(params[:id])
+  end
+  def reply_conversation
+    @conversation = Mailboxer::Conversation.find(params[:conversation])
+    current_admin.reply_to_conversation(@conversation, params[:body])
+    redirect_to show_conversation_customer_ads_path(@conversation)
+  end
 
   def show
     @customer_ad = @customer_ad

@@ -1,0 +1,7 @@
+- @conversations.each do |conversation|
+  strong
+    = conversation.originator.customer.company_name
+  i
+    = conversation.subject
+  = link_to ' | Voir', show_conversation_customer_ads_path(conversation)
+  br
