@@ -1,3 +1,5 @@
 = @candidat.name
-
+br
 =link_to 'Contacter', new_customer_message_path(user: @candidat.user)
+br
+= link_to " Download", @candidat.my_cv.url(:original, false) , target: "_blank"

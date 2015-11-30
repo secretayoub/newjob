@@ -11,48 +11,90 @@ html lang="en"
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
-    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
-    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
-    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
-    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application", 'data-turbolinks-track' => true
 
 
 
-  body
-    .navbar.navbar-default.navbar-static-top
+  body.bg-sky
+    nav.navbar.navbar-perso role="navigation"
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href="#"  NewJob
+        /! Collect the nav links, forms, and other content for toggling
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            - unless user_signed_in?
+              a.dropdown-toggle data-toggle="dropdown" href="#"
+                b Login
+                span.caret
+              ul#login-dp.dropdown-menu
+                li
+                  .row
+                    .col-md-12
+                      = render file: "devise/sessions/new"
+
+            - else
+              a.dropdown-toggle.test data-toggle="dropdown" href="#"
+                b = current_user.candidat.name
+                span.caret
+              ul#login-dp.dropdown-menu
+                li
+                  .row
+                    .col-md-12
+                      .col-md-2
+                      .col-md-6
+                       = link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+                      .col-md-4
+                  .row
+                    .col-md-12
+                      br
+
+
+              /   = link_to "Sign up", new_user_registration_path
+              /   = link_to "Sign in", new_user_session_path
+    - if controller_name == "welcome" && action_name == "index"
+      section#about.success
         .container
-          button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand href="#"Newjob
-          .navbar-collapse.collapse.navbar-responsive-collapse
-            ul.nav.navbar-nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
-            .pull-right
-              - unless user_signed_in?
-                = link_to "Sign up", new_user_registration_path
-                = link_to "Sign in", new_user_session_path
-              - else
-                = link_to "Sign out", destroy_user_session_path, method: :delete
+          .row
+            .col-lg-12.text-center
+              h2
+                strong.devise
+                  | Offres d’Emploi  & Recrutements Rapide.
+          .space
+          .row
+            .col-lg-4.col-lg-offset-2.bg-success-search
+              .group-form
+                .input-group
+                  input class= "form-control input-search" placeholder= 'Quoi? Mot clé, société ...'
+                  span.input-group-addon.search-awsome
+                    span.fa.fa-search
+
+            .col-lg-4.bg-success-search
+              .group-form
+                .input-group
+                  input class= "form-control input-search" placeholder= 'Où? Ville ...'
+                  span.input-group-addon.search-awsome
+                    span.fa.fa-location-arrow
+            .col-lg-1.bg-success-search
+              .group-form
+                strong.devise-submit
+                  input type= "submit" class= "btn btn-default btn-search"
+
+
+          br
+
 
     .container
       .row
         .col-lg-9
           = bootstrap_flash
           = yield
-        .col-lg-3
-          .well.sidebar-nav
-            h3 Sidebar
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+
 
       footer
-        p -
+        p - Ayoub

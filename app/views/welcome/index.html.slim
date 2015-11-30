@@ -1,20 +1,30 @@
 h1 Listing ads
 
-table.table.table-striped
-  thead
-    tr
-      th Titre
-      th Tags
-      th Action
+
+/ raw ad.tag_list.map{ |t| link_to t, tag_path(t)}.join(', ')
+/ link_to 'Voir',
 
 
-  tbody
-    - @ads.each do |ad|
-      tr
-        td = ad.title
-        td = raw ad.tag_list.map{ |t| link_to t, tag_path(t)}.join(', ')
-        td = link_to 'Voir', welcome_path(ad)
-br
+.row
+  .col-xs-12
+    ul.event-list
+      - @ads.each do |ad|
+        li
+          =image_tag(ad.customer.avatar.url(:thumb))
+          .info
+            h3.title = link_to ad.title, welcome_path(ad)
+            p.desc = ad.customer.company_name
+            .tags
+              = raw ad.tag_list.map{ |t| link_to t, tag_path(t), class: 'btn-primary'}.join(', ')
+          .social
+            ul
+              li.dates  = time_ago_in_words(ad.created_at)
+              li.types  = ad.contract_types.first.title
+
+
+
+
+
 
 = link_to "Candidat", new_candidat_path
 br

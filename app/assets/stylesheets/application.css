@@ -9,9 +9,88 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+@font-face {
+    font-family: 'motion';
+    src:url('/assets/motion.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'search';
+    src:url('/assets/search.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'billy';
+    src:url('/assets/billy.otf');
+}
+@font-face {
+    font-family: 'blazed';
+    src:url('/assets/Blazed.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'alex';
+    src:url('/assets/alex.ttf') format('truetype');
+}
+
+.bg-sky{
+  background-color: #FAFEFE;
+}
+.bg-success-search{
+  padding:10px;
+  background-color: #2980b9;
+}
+.btn-search {
+  font-family: 'search';
+  display: block;
+  background-color: #009ac9;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.btn-search:hover{
+  background-color: #ffffff;
+  color: #009ac9;
+}
+
+.input-search{
+    font-family: 'search';
+    font-size: 20px;
+    color: #2980b9;
+}
+.search-awsome{
+    background-color: #fff;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+section.primary h2{
+    color: #2c3e50;
+    }
+
+section.success{
+    background-color: #ecf0f1;
+    color: #34495e;
+    }
+.devise{
+    font-family: 'alex';
+}
+.devise-submit{
+    font-family: 'alex';
+    font-size: 10em;
+}
+
+
 
 .space{
   padding: 15px;
@@ -28,4 +107,49 @@
 }
 .checkbox > .radio{
   padding-left: 20px;
+}
+.navbar-perso {
+    background-color: #1abc9c;
+}
+
+.navbar-brand{
+    font-family: 'blazed';
+    font-size: 35px;
+}
+.navbar-brand:hover{
+    background-color: #16a085;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:#ecf0f1;
+}
+#login-dp .help-block{
+    font-size:12px
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
 }

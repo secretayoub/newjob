@@ -43,6 +43,8 @@ gem 'awesome_print', require: 'ap'
 gem 'acts-as-taggable-on'
 gem 'ckeditor'
 gem 'rails-i18n'
+gem 'pdf-reader'
+gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
