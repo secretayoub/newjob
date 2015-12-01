@@ -1,58 +1,57 @@
 p#notice = notice
 
 .col-md-12
-  section.panel
-    .panel-body
-      .position-center
+  .col-md-2
+    .col-md-12
+      = image_tag @ad.customer.avatar.url(:thumb), class: 'img-rounded'
 
-        .form-group
-          .col-lg-2.col-sm-2.control-label Titre Annonce
-          .col-lg-10
-            = @ad.title
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Type contrat
-          .col-lg-10
-            - @ad.contract_types.each do |type|
-              = type.title
-              br
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label rémunération
-          .col-lg-10
-            = @ad.renumeration.title
-              br
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Activité société
-          .col-lg-10
-            = raw(@ad.ad_text)
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Profil
-          .col-lg-10
-            = raw(@ad.profil)
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Mission
-          .col-lg-10
-            = raw(@ad.mission)
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Avantages
-          .col-lg-10
-            = @ad.advantage
-        hr
-        .form-group
-          .col-lg-2.col-sm-2.control-label Mot clé separer par virgule
-          .col-lg-10
-            = @ad.tag_list
-        - if user_signed_in?
-          hr
-          .form-group
-            = form_for(@candidat_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
-              = f.hidden_field :ad_id, value: @ad.id
-              = f.submit "Postuler", class: "button btn btn-success btn-xs pull-right"
+  .col-md-10
+
+    .col-md-10
+      .titles
+        = @ad.title
+    .col-md-2
+
+      = time_ago_in_words(@ad.created_at)
+    .col-md-12.space
+
+    .col-md-3.mini-info
+      = @ad.customer.company_name
+    .col-md-3.mini-info
+      = @ad.renumeration.title
+    .col-md-3.mini-info
+      = @ad.customer.city
+    .col-lg-offset-1.col-md-2.mini-info
+      = @ad.contract_types.first.title
+
+  .col-md-12.space
+  .col-md-12.space
+    .title_ad
+      | Activité société
+    .ad_txt
+      = raw(@ad.ad_text)
+    .space
+
+    .title_ad
+      | Profil
+    .ad_txt
+      = raw(@ad.profil)
+    .space
+
+    .title_ad
+      | Mission
+    .ad_txt
+      = raw(@ad.mission)
+    .space
+    .tags
+      = raw @ad.tag_list.map{ |t| link_to t, tag_path(t), class: 'btn btn-primary'}.join(', ')
+
+  .col-lg-offset-10.col-lg-2
+    - if user_signed_in?
+      .form-group
+        = form_for(@candidat_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
+          = f.hidden_field :ad_id, value: @ad.id
+          = f.submit "Postuler pour ce poste", class: "button btn btn-primary btn-lg pull-right"
 
 
-= link_to 'Back', customer_ads_path
+= link_to 'Retour', :root, class: 'btn btn-warning btn-xs'

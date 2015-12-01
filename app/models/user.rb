@@ -11,5 +11,7 @@ class User < ActiveRecord::Base
   def name
     "#{self.candidat.name}"
   end
-
+  def avatar
+    self.candidat.avatar
+  end
 end

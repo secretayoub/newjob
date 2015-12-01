@@ -24,23 +24,35 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand href="#"  NewJob
-        /! Collect the nav links, forms, and other content for toggling
+          = link_to 'BenJob.ma', :root, class: 'navbar-brand'
         ul.nav.navbar-nav.navbar-right
-          li.dropdown
-            - unless user_signed_in?
+          - unless user_signed_in?
+            li.dropdown
               a.dropdown-toggle data-toggle="dropdown" href="#"
-                b Login
+                b S'enregistrer
                 span.caret
               ul#login-dp.dropdown-menu
                 li
                   .row
                     .col-md-12
-                      = render file: "devise/sessions/new"
+                      = render file: "devise/registrations/new"
+            li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" href="#"
+                  b Login
+                  span.caret
+                ul#login-dp.dropdown-menu
+                  li
+                    .row
+                      .col-md-12
+                        = render file: "devise/sessions/new"
 
-            - else
+          - else
+            li.fils
+              = link_to 'Conversation', list_conversation_candidats_path
+            li.dropdown
               a.dropdown-toggle.test data-toggle="dropdown" href="#"
-                b = current_user.candidat.name
+                - unless current_user.candidat.nil?
+                  b = current_user.candidat.name
                 span.caret
               ul#login-dp.dropdown-menu
                 li
@@ -87,11 +99,13 @@ html lang="en"
 
 
           br
-
+    .container
+      .row
+        .space
 
     .container
       .row
-        .col-lg-9
+        .col-lg-offset-1.col-lg-10.col-md-1.well
           = bootstrap_flash
           = yield
 

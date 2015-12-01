@@ -4,6 +4,58 @@
   .dates{color: #7f8c8d;}
   .types{color: #3498db;}
 
+  hr{
+    color: #ff0000;
+  }
+
+  .welcome_title{
+    font-size: 200%;
+    padding-bottom: 25px;
+    color: #2c3e50;
+  }
+
+  .mini-info{
+    color: #d35400;
+  }
+  .ad_txt{
+    padding: 15px;
+  }
+  .ad_size_text{
+    font-size: 200%;
+
+  }
+  .title_ad{
+    font-size: 150%;
+    padding: 0px;
+    color: #2c3e50;
+  }
+
+  .titles{
+    font-size: 200%;
+    padding: 0px;
+    color: #2980b9;
+  }
+
+
+  a.links:link {
+      text-decoration: none;
+      color: #2980b9;
+  }
+
+  a.links:visited {
+      text-decoration: none;
+      color: #2980b9;
+  }
+
+  a.links:hover {
+      text-decoration: none;
+      background-color: #2980b9;
+      color: #fff;
+  }
+
+  a.links:active {
+      text-decoration: none;
+  }
 
   .event-list {
     list-style: none;

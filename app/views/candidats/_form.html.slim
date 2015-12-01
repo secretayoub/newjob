@@ -1,24 +1,21 @@
 .col-md-12
-  section.panel
-    .panel-body
-      .position-center
-        = form_for(@candidat, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
-          .form-group
-            .col-lg-2.col-sm-2.control-label = label_tag :name, "Votre nom"
-            .col-lg-10
-              = f.text_field :name, class: "form-control"
-          .form-group
-            .col-lg-2.col-sm-2.control-label = label_tag :phone_number, "Votre numéro"
-            .col-lg-10
-              = f.text_field :phone_number, class: "form-control"
-          .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :avatar, "Votre image"
-            .col-lg-10
-              = f.file_field :avatar, class: "form-control"
+  = form_for(@candidat, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
+    .form-group
+      .col-lg-2.col-sm-2.control-label = label_tag :name, "Votre nom"
+      .col-lg-10
+        = f.text_field :name, class: "form-control"
+    .form-group
+      .col-lg-2.col-sm-2.control-label = label_tag :phone_number, "Votre numéro"
+      .col-lg-10
+        = f.text_field :phone_number, class: "form-control"
+    .form-group
+      .col-lg-2.col-sm-2.control-label = f.label :avatar, "Votre image"
+      .col-lg-10
+        = f.file_field :avatar, class: "form-control"
 
-          .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :my_cv, "Votre CV"
-            .col-lg-10
-              = f.file_field :my_cv, class: "form-control"
-          .form-actions
-            = f.submit "Ajouter", class: "button btn btn-success btn-xs pull-right"
+    .form-group
+      .col-lg-2.col-sm-2.control-label = f.label :my_cv, "Votre CV"
+      .col-lg-10
+        = f.file_field :my_cv, class: "form-control"
+    .form-actions
+      = f.submit "Ajouter", class: "button btn btn-success btn-xs pull-right"

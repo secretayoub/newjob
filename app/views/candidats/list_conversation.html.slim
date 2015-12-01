@@ -1,9 +1,35 @@
-- @conversations.each do |conversation|
-  strong
-    = conversation.originator.customer.company_name
-  i
-    = conversation.subject
-  = link_to ' | Voir', show_conversation_candidats_path(conversation)
-  br
+.welcome_title Conversations
+
+.space
+ul.nav.nav-tabs
+  li.active
+    a data-toggle="tab" href="#home"
+      span.fa.fa-inbox
+        |  Primary
+  li
+    a data-toggle="tab" href="#profile"
+      span.fa.fa-bookmark-o
+       |  Non lus
+
+.tab-content
+  #home.tab-pane.fade.in.active
+    .list-group
+      - @conversations.each do |conversation|
+        = link_to show_conversation_candidats_path(conversation), class: 'list-group-item'
+          span.name style=("min-width: 140px; display: inline-block; font-weight: bold;")  = conversation.originator.customer.company_name
+          span = conversation.subject
+          span.text-muted style=("font-size: 11px;")  = " - #{conversation.messages.last.body.first(50)}"
+          span.badge = time_ago_in_words(conversation.messages.last.created_at)
 
 
+      a.list-group-item.read href="#"
+        span.name style=("min-width: 140px; display: inline-block;")  Bhaumik Patel
+        span This is big title
+        span.text-muted style=("font-size: 11px;")  - Hi hello how r u ?
+        span.badge 12:10 AM
+
+
+  #profile.tab-pane.fade.in
+    .list-group
+      .list-group-item
+        span.text-center This tab is empty.

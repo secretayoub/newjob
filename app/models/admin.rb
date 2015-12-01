@@ -11,4 +11,8 @@ class Admin < ActiveRecord::Base
   def name
     "#{self.customer.company_name}"
   end
+
+  def avatar
+    self.customer.avatar
+  end
 end
