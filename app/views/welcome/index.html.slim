@@ -3,18 +3,20 @@
 .row
   .col-xs-12
     ul.event-list
-      - @ads.each do |ad|
-        li
-          =image_tag(ad.customer.avatar.url(:thumb))
-          .info
-            h3.title = link_to ad.title, welcome_path(ad), class: 'links'
-            p.desc = ad.customer.company_name
-            .tags
-              = raw ad.tag_list.map{ |t| link_to t, tag_path(t), class: 'btn-primary'}.join(', ')
-          .social
-            ul
-              li.dates  = time_ago_in_words(ad.created_at)
-              li.types  = ad.contract_types.first.title
+      - if @ads.any?
+        - @ads.each do |ad|
+          li
+            =image_tag(ad.customer.avatar.url(:thumb))
+            .info
+              h3.title = link_to ad.title, welcome_path(ad), class: 'links'
+              p.desc = ad.customer.company_name
+              .tags
+                = raw ad.tag_list.map{ |t| link_to t, tag_path(t), class: 'btn-primary'}.join(',')
+            .social
+              ul
+                li.dates  = time_ago_in_words(ad.created_at)
+                - unless  ad.contract_types.first.nil?
+                  li.types  = ad.contract_types.first.title
 
 
 

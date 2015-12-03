@@ -1,0 +1,4 @@
+# config/chewy.yml
+# separate environment configs
+development:
+  host: 'localhost:9200'

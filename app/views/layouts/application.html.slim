@@ -79,23 +79,25 @@ html lang="en"
                   | Offres d’Emploi  & Recrutements Rapide.
           .space
           .row
-            .col-lg-4.col-lg-offset-2.bg-success-search
-              .group-form
-                .input-group
-                  input class= "form-control input-search" placeholder= 'Quoi? Mot clé, société ...'
-                  span.input-group-addon.search-awsome
-                    span.fa.fa-search
+            = form_for @search, as: :search, url: welcome_index_path, method: :get do |f|
 
-            .col-lg-4.bg-success-search
-              .group-form
-                .input-group
-                  input class= "form-control input-search" placeholder= 'Où? Ville ...'
-                  span.input-group-addon.search-awsome
-                    span.fa.fa-location-arrow
-            .col-lg-1.bg-success-search
-              .group-form
-                strong.devise-submit
-                  input type= "submit" class= "btn btn-default btn-search"
+              .col-lg-4.col-lg-offset-2.bg-success-search
+                .group-form
+                  .input-group
+                    = f.text_field :query, class: 'form-control input-search', placeholder: 'Quoi? Mot clé, société ...'
+                    span.input-group-addon.search-awsome
+                      span.fa.fa-search
+
+              .col-lg-4.bg-success-search
+                .group-form
+                  .input-group
+                    = f.text_field :tag_list, class: 'form-control input-search', placeholder: 'Tags'
+                    span.input-group-addon.search-awsome
+                      span.fa.fa-location-arrow
+              .col-lg-1.bg-success-search
+                .group-form
+                  strong.devise-submit
+                    = f.submit 'Valider ', class: "btn btn-default btn-search"
 
 
           br

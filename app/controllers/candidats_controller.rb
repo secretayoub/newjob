@@ -7,11 +7,13 @@ class CandidatsController < ApplicationController
   end
 
   def list_conversation
-    @conversations = current_user.mailbox.conversations
+    @conversations_unread = current_user.mailbox.inbox(unread: true)
+    @conversations_read   = current_user.mailbox.inbox - current_user.mailbox.inbox(unread: true)
   end
 
   def show_conversation
     @conversation = Mailboxer::Conversation.find(params[:id])
+    @conversation.mark_as_read(current_user)
   end
   def reply_conversation
     @conversation = Mailboxer::Conversation.find(params[:conversation])
