@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   before_action :set_customer_ad, only: :show
   def index
     @search = CustomerAdsSearch.new(params[:search])
-    @ads = @search.search.only(:id).page(params[:page]).load(
+    @ads = @search.search.only(:id).paginate(:page => params[:page], :per_page => 5).load(
         customer: {scope: Customer::Ad.includes(:customer)} )
   rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
     @ads = []

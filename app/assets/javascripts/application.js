@@ -16,3 +16,11 @@
 //= require ckeditor/init
 //= require turbolinks
 //= require_self
+
+
+  $(document).ready(function() {
+      $("#opendropdown").click(function(ev) {
+          $("a.dropdown-toggle").dropdown("toggle");
+          return false;
+      });
+  });

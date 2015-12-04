@@ -1,30 +1,49 @@
-.welcome_title Annonces
-
+.row.well-type
+  .funkyradio
+    .funkyradio-primary.col-lg-3
+      input#cdd checked="" name="checkbox" type="checkbox" /
+      label for="cdd"  CDD
+    .funkyradio-success.col-lg-3
+      input#cdi checked="" name="checkbox" type="checkbox" /
+      label for="cdi"  CDI
+    .funkyradio-warning.col-lg-3
+      input#stage checked="" name="checkbox" type="checkbox" /
+      label for="stage"  Stage
+    .funkyradio-info.col-lg-3
+      input#freelance checked="" name="checkbox" type="checkbox" /
+      label for="freelance"  Freelance
+.row
+  .col-md-12
+    .space
 .row
   .col-xs-12
     ul.event-list
       - if @ads.any?
         - @ads.each do |ad|
           li
-            =image_tag(ad.customer.avatar.url(:thumb))
+            =image_tag ad.customer.avatar.url(:thumb)
             .info
               h3.title = link_to ad.title, welcome_path(ad), class: 'links'
-              p.desc = ad.customer.company_name
+              p.desc
+                i
+                  = ad.customer.company_name
               .tags
-                = raw ad.tag_list.map{ |t| link_to t, tag_path(t), class: 'btn-primary'}.join(',')
+                = raw ad.tag_list.map{ |t| link_to t, tag_path(t), class: "btn-#{Welcome::COLORS.values[rand(Welcome::COLORS.size)]} btn-xs"}.join(',')
             .social
               ul
                 li.dates  = time_ago_in_words(ad.created_at)
                 - unless  ad.contract_types.first.nil?
-                  li.types  = ad.contract_types.first.title
+                  - ad.contract_types.each do |type|
+                    li.types  = type.title
 
-
-
+  .col-xs-offset-4.col-md-8
+    = will_paginate @ads,:previous_label => 'Précédent', :next_label => 'Suivant', renderer: BootstrapPagination::Rails
 
 
 
 = link_to "Rectuteur", new_customer_customer_path
 br
+
 br
 - if user_signed_in?
   = link_to 'Conversation', list_conversation_candidats_path

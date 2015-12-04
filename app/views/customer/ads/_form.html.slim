@@ -1,58 +1,56 @@
 .col-md-12
-  section.panel
-    .panel-body
-      .position-center
-        = form_for(@customer_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
-          .form-group
-            .col-lg-2.col-sm-2.control-label = label_tag :title, "Titre Annonce"
-            .col-lg-10
-              = f.text_field :title, class: "form-control"
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = label_tag "Type contrat"
-            .col-lg-10
-              .risk-column-new
-                = f.collection_check_boxes(:contract_type_ids, Customer::ContractType.all, :id, :title) do |b|
-                  .checkbox
-                    label
-                      = b.check_box type: "checkbox"
-                      = b.label
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = label_tag :title, "rémunération"
-            .col-lg-10
-              .risk-column-new
-                = f.collection_radio_buttons :renumeration_id, Customer::Renumeration.all, :id, :title do |b|
-                  .checkbox
-                    label.radio
-                      = b.radio_button
-                      = b.label
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :ad_text, "Activité société"
-            .col-lg-10
-              = f.cktext_area :ad_text
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :profil, "Mission"
-            .col-lg-10
-              = f.cktext_area :profil
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :mission, "Profil"
-            .col-lg-10
-              = f.cktext_area :mission
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = label_tag :advantage, "Avantages"
-            .col-lg-10
-              = f.text_field :advantage, class: "form-control"
-          hr
-          .form-group
-            .col-lg-2.col-sm-2.control-label = f.label :tag_list, "Mot clé separer par virgule"
-            .col-lg-10
-              = f.text_field :tag_list, class: 'form-control'
+  .position-center
+    = form_for(@customer_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
+      .form-group
+        .col-lg-2.col-sm-2.control-label = label_tag :title, "Titre Annonce"
+        .col-lg-10
+          = f.text_field :title, class: "form-control"
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = label_tag "Type contrat"
+        .col-lg-10
+          .risk-column-new
+            = f.collection_check_boxes(:contract_type_ids, Customer::ContractType.all, :id, :title) do |b|
+              .checkbox
+                label
+                  = b.check_box type: "checkbox"
+                  = b.label
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = label_tag :title, "rémunération"
+        .col-lg-10
+          .risk-column-new
+            = f.collection_radio_buttons :renumeration_id, Customer::Renumeration.all, :id, :title do |b|
+              .checkbox
+                label.radio
+                  = b.radio_button
+                  = b.label
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = f.label :ad_text, "Activité société"
+        .col-lg-10
+          = f.cktext_area :ad_text
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = f.label :profil, "Mission"
+        .col-lg-10
+          = f.cktext_area :profil
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = f.label :mission, "Profil"
+        .col-lg-10
+          = f.cktext_area :mission
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = label_tag :advantage, "Avantages"
+        .col-lg-10
+          = f.text_field :advantage, class: "form-control"
+      hr
+      .form-group
+        .col-lg-2.col-sm-2.control-label = f.label :tag_list, "Mot clé separer par virgule"
+        .col-lg-10
+          = f.text_field :tag_list, class: 'form-control'
 
-          hr
-          .form-actions
-            = f.submit "Valider", class: "button btn btn-success btn-xs pull-right"
+      hr
+      .form-actions
+        = f.submit "Valider", class: "button btn btn-success btn-xs pull-right"

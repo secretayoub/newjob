@@ -48,10 +48,17 @@ p#notice = notice
 
   .col-lg-offset-10.col-lg-2
     - if user_signed_in?
-      .form-group
-        = form_for(@candidat_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
-          = f.hidden_field :ad_id, value: @ad.id
-          = f.submit "Postuler pour ce poste", class: "button btn btn-primary btn-lg pull-right"
+      - begin
+        - current_user.ads.find(@ad)
+        = link_to "déja postuler", nil, class: "button btn btn-default btn-sm pull-right"
+      - rescue
+        .form-group
+          = form_for(@candidat_ad, :html => {:class => "form-horizontal", 'role' => 'form'} )do |f|
+            = f.hidden_field :ad_id, value: @ad.id
+            = f.submit "Postuler pour ce poste", class: "button btn btn-success btn-sm pull-right"
+    - else
+      = link_to "Connectez vous", '#', class: "button btn btn-primary btn-sm pull-right", id: "opendropdown"
+
 
 
 = link_to 'Retour', :root, class: 'btn btn-warning btn-xs'
