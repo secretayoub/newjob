@@ -66,9 +66,6 @@ html lang="en"
                     .col-md-12
                       br
 
-
-              /   = link_to "Sign up", new_user_registration_path
-              /   = link_to "Sign in", new_user_session_path
     - if controller_name == "welcome" && action_name == "index"
       section#about.success
         .container
@@ -78,38 +75,21 @@ html lang="en"
                 strong.devise
                   | Offres d’Emploi  & Recrutements Rapide.
           .space
-          .row
-            = form_for @search, as: :search, url: welcome_index_path, method: :get do |f|
 
-              .col-lg-4.col-lg-offset-2.bg-success-search
-                .group-form
-                  .input-group
-                    = f.text_field :query, class: 'form-control input-search', placeholder: 'Quoi? Mot clé, société ...'
-                    span.input-group-addon.search-awsome
-                      span.fa.fa-search
-
-              .col-lg-4.bg-success-search
-                .group-form
-                  .input-group
-                    = f.text_field :tag_list, class: 'form-control input-search', placeholder: 'Tags'
-                    span.input-group-addon.search-awsome
-                      span.fa.fa-location-arrow
-              .col-lg-1.bg-success-search
-                .group-form
-                  strong.devise-submit
-                    = f.submit 'Valider ', class: "btn btn-default btn-search"
-
-
-          br
     .container
       .row
         .space
 
     .container
       .row
-        .col-lg-offset-1.col-lg-10.col-md-1.well-white
+        .col-lg-8.well-white
           = bootstrap_flash
           = yield
+        .col-md-1
+        .col-lg-3.well
+          h1 Comming Soon
+          strong tags, most viewed
+
 
 
       footer

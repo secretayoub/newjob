@@ -58,6 +58,22 @@ body{
     src:url('/assets/alex.ttf') format('truetype');
 }
 
+
+.nav>li>a:hover{
+  background-color: #2980b9;
+}
+
+ .nav>li>a:active {
+      background-color: #2980b9;
+  }
+   .nav>li>a:link {
+      background-color: #2980b9;
+  }
+
+   .nav>li>a:visited {
+      background-color: #2980b9;
+  }
+
 li.fils{
   font-weight: bold;
 }
@@ -66,6 +82,7 @@ li.fils{
 }
 .bg-success-search{
   padding:10px;
+
   background-color: #2980b9;
 }
 .btn-search {
@@ -91,9 +108,11 @@ li.fils{
     font-family: 'search';
     font-size: 20px;
     color: #2980b9;
+    border-radius: 0px;
 }
 .search-awsome{
     background-color: #fff;
+    border-radius: 0px;
 }
 
 .navbar{
@@ -105,8 +124,10 @@ section.primary h2{
     }
 
 section.success{
-    background-color: #ecf0f1;
+    background-color: #ffffff;
+    border-bottom: 1px solid #2c3e50;
     color: #34495e;
+    height: 75px;
     }
 .devise{
     font-family: 'alex';
@@ -136,6 +157,7 @@ section.success{
 }
 .navbar-perso {
     background-color: #2980b9;
+    border-radius: 0px;
 }
 
 .navbar>.container-fluid .navbar-brand{

@@ -1,20 +1,49 @@
+.mini-space
 .row.well-type
-  .funkyradio
-    .funkyradio-primary.col-lg-3
-      input#cdd checked="" name="checkbox" type="checkbox" /
-      label for="cdd"  CDD
-    .funkyradio-success.col-lg-3
-      input#cdi checked="" name="checkbox" type="checkbox" /
-      label for="cdi"  CDI
-    .funkyradio-warning.col-lg-3
-      input#stage checked="" name="checkbox" type="checkbox" /
-      label for="stage"  Stage
-    .funkyradio-info.col-lg-3
-      input#freelance checked="" name="checkbox" type="checkbox" /
-      label for="freelance"  Freelance
-.row
-  .col-md-12
-    .space
+  = form_for @search, as: :search, url: welcome_index_path, method: :get do |f|
+    .col-md-12
+      .col-lg-6.bg-success-search
+        .group-form
+          .input-group
+            = f.text_field :query, class: 'form-control input-search', placeholder: 'Quoi? Mot clé, société ...'
+            span.input-group-addon.search-awsome
+              span.fa.fa-search
+      .col-lg-6.bg-success-search
+        .group-form
+          .input-group
+            = f.text_field :tag_list, class: 'form-control input-search', placeholder: 'Tags'
+            span.input-group-addon.search-awsome
+              span.fa.fa-location-arrow
+    hr
+    .col-xs-12.delete-padding
+      .funkyradio
+        .funkyradio-primary.col-xs-3
+          = f.check_box :cdd_choice,{id: 'search_cdd', :onchange => 'this.form.submit();'}, 'cdd', nil
+          = f.label :cdd, "CDD"
+        .funkyradio-success.col-xs-3
+          = f.check_box :cdi_choice, {id: 'search_cdi', :onchange => 'this.form.submit();'}, 'cdi', nil
+          = f.label :cdi, "CDI"
+        .funkyradio-warning.col-xs-3
+          = f.check_box :stage_choice,  {id: 'search_stage', :onchange => 'this.form.submit();'}, 'stage', nil
+          = f.label :stage, "Stage"
+        .funkyradio-info.col-xs-3
+          = f.check_box :freelance_choice, { id: 'search_freelance', :onchange => 'this.form.submit();'}, 'freelance', nil
+          = f.label :freelance, "Freelance"
+
+/   .funkyradio
+/     = form_for @search, as: :search, url: welcome_index_path, method: :get do |f|
+/       .funkyradio-primary.col-lg-3
+/         = f.check_box :cdd_choice,{id: 'search_cdd', :onchange => 'this.form.submit();'}, 'cdd', nil
+/         = f.label :cdd, "CDD"
+/       .funkyradio-success.col-lg-3
+/         = f.check_box :cdi_choice, {id: 'search_cdi', :onchange => 'this.form.submit();'}, 'cdi', nil
+/         = f.label :cdi, "CDD"
+/       .funkyradio-warning.col-lg-3
+/         = f.check_box :stage_choice,  {id: 'search_stage', :onchange => 'this.form.submit();'}, 'stage', nil
+/         = f.label :stage, "Stage"
+/       .funkyradio-info.col-lg-3
+/         = f.check_box :freelance_choice, { id: 'search_freelance', :onchange => 'this.form.submit();'}, 'freelance', nil
+/         = f.label :freelance, "Freelance"
 .row
   .col-xs-12
     ul.event-list

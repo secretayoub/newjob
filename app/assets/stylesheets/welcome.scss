@@ -4,10 +4,17 @@
   .dates{color: #7f8c8d;}
   .types{color: #3498db;}
 
-  hr{
-    color: #ff0000;
+  .delete-padding{
+    padding: 0px;
   }
 
+  .mini-space{
+    padding: 5px;
+  }
+
+  #hidden-button{
+    visibility: hidden;
+    }
   .welcome_title{
     font-size: 200%;
     padding-bottom: 25px;
@@ -157,6 +164,7 @@
 
 
   @media (min-width: 768px) {
+
     .event-list > li {
       position: relative;
       display: block;
@@ -242,8 +250,8 @@
     /*min-width: 400px;*/
     width: 100%;
     border-radius: 3px;
-    border: 1px solid #D1D3D4;
     font-weight: normal;
+    border-radius: 0px;
 }
 .funkyradio input[type="radio"]:empty, .funkyradio input[type="checkbox"]:empty {
     display: none;
@@ -268,7 +276,8 @@
     content:'';
     width: 2.5em;
     background: #D1D3D4;
-    border-radius: 3px 0 0 3px;
+    border-right: 1px solid #f2f2f2;
+    border-radius: 0px;
 }
 .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before, .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
     content:'\2714';
@@ -308,3 +317,9 @@
     color: #fff;
     background-color: #5bc0de;
 }
+
+
+.funkyradio-primary label { border: 1px solid #337ab7;}
+.funkyradio-success label { border: 1px solid #5cb85c;}
+.funkyradio-warning label { border: 1px solid #f0ad4e;}
+.funkyradio-info label { border: 1px solid #5bc0de;}
